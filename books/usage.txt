@@ -1,0 +1,25 @@
+books.py 
+
+NAME
+	search for case sensitive book titles
+
+SYNOPSIS
+	python3 books.py author ...
+	python3 books.py title ...
+	python3 books.py [range of years] ...
+	python3 books.py man 
+DESCRIPTION
+	The books.py utility allows a user to input a title, an author, or a range of years
+	and search from a csv and returns the results from the search.
+
+EXIT STATUS
+	The books.py utility exits either blank or with a list on success and
+	prints error if error occurred
+
+EXAMPLES
+	Search for book with the title "Hello":
+	python3 books.py "title = Hello"
+
+	Search for book with the author "James Pham"
+	python3 books.py "author = James Pham"
+
