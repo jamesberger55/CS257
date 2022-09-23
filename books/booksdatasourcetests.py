@@ -43,8 +43,13 @@ class BooksDataSourceTester(unittest.TestCase):
         books = self.data_source.books('Orange')
         self.assertTrue(len(books) == 0)
      
+<<<<<<< HEAD
     def test_case_sensitive_title(self:
         books = self.data_source.books('Beloved')
+=======
+    def test_case_sensitive_title(self):
+        books = self.data_source.books('beloved')
+>>>>>>> b9a15217da3f48e5f0e0aa101e58fd7f7a948feb
         self.assertTrue(len(books) == 0)
 
 
