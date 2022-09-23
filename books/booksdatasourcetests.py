@@ -38,6 +38,14 @@ class BooksDataSourceTester(unittest.TestCase):
         self.assertTrue(books[1].title == 'Emma')
         self.assertTrue(books[2].title == 'Neverwhere')
     
+    def test_book_not_in_csv(self):
+        books = self.data_source.books('Orange')
+        self.assertTrue(len(books) == 0)
+     
+    def test_case_sensitive_title(self:
+        books = self.data_source.books('beloved')
+        self.assertTrue(len(books) == 0)
+
 
 if __name__ == '__main__':
     unittest.main()
