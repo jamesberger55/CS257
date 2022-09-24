@@ -47,9 +47,12 @@ class BooksDataSourceTester(unittest.TestCase):
     def test_book_not_in_csv(self):
         books = self.data_source.books('Orange')
         self.assertTrue(len(books) == 0)
+<<<<<<< HEAD
      
     def test_case_sensitive_title(self:
         books = self.data_source.books('Beloved')
+=======
+>>>>>>> 39b30ebcb0f754edb66a5ab587c66baa468a7cdd
 
     def test_case_sensitive_title(self):
         books = self.data_source.books('beloved')
