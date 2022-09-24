@@ -20,7 +20,7 @@ class BooksDataSourceTester(unittest.TestCase):
     
     def test_all_authors(self):
         tiny_data_source = BooksDataSource('tinybooks.csv')
-        authors = self.tiny_data_source.authors()
+        authors = tiny_data_source.authors()
         self.assertTrue(len(authors) == 3)
         self.assertTrue(authors[0] == Author('Austen', 'Jane'))
         self.assertTrue(authors[1] == Author('Gaiman', 'Neil'))
@@ -31,11 +31,15 @@ class BooksDataSourceTester(unittest.TestCase):
         self.assertTrue(len(authors) == 2)
         self.assertTrue(authors[0] == Author('Willis', 'Connie') & authors[1] == Author('Willis', 'Connie'))
 
+    def test_unique_author(self):
+        author = self.data_source.authors('Campbell')
+        self.assertTrue(len(author) == 0)
+
     def test_unique_book(self):
         books = self.data_source.books('Beloved')
         self.assertTrue(len(books) == 1)
         self.assertTrue(books[0] == Book('Beloved'))
-         
+
     def test_all_books(self):
         tiny_data_source = BooksDataSource('tinybooks.csv')
         books = tiny_data_source.books()
@@ -44,15 +48,16 @@ class BooksDataSourceTester(unittest.TestCase):
         self.assertTrue(books[1].title == 'Emma')
         self.assertTrue(books[2].title == 'Neverwhere')
     
+    def invalid_book_input(self):
+        books = self.data_source.books(2000)
+        self.assertTrue(len(books) == 0)
+
     def test_book_not_in_csv(self):
         books = self.data_source.books('Orange')
         self.assertTrue(len(books) == 0)
-<<<<<<< HEAD
      
-    def test_case_sensitive_title(self:
+    def test_case_sensitive_title(self):
         books = self.data_source.books('Beloved')
-=======
->>>>>>> 39b30ebcb0f754edb66a5ab587c66baa468a7cdd
 
     def test_case_sensitive_title(self):
         books = self.data_source.books('beloved')
@@ -62,8 +67,16 @@ class BooksDataSourceTester(unittest.TestCase):
         books = self.data_source.books("Beloved, Omoo")
         self.assertTrue(len(books) == 0)
 
-    def year_not_in_scope(self):
-        books = self.data_source.books.year(1000)
+    def years_not_in_scope(self):
+        books = self.data_source.books_between_years(1000, 1001)
+        self.assertTrue(len(books) == 0)
+
+    def test_one_year(self):
+        books = self.data_source.books_between_years(2016, 2019)
+        self.assertTrue(len(books) == 3)
+
+    def invalid_year_input(self):
+        books = self.data_source.books_between_years('bad', 'input')
         self.assertTrue(len(books) == 0)
 
 if __name__ == '__main__':
