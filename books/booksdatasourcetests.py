@@ -26,6 +26,11 @@ class BooksDataSourceTester(unittest.TestCase):
         self.assertTrue(authors[1] == Author('Gaiman', 'Neil'))
         self.assertTrue(authors[2] == Author('Melville', 'Herman'))
 
+    def test_one_author(self):
+        authors = self.data_source.authors('Willis')
+        self.assertTrue(len(authors) == 2)
+        self.assertTrue(authors[0] == Author('Willis', 'Connie') & authors[1] == Author('Willis', 'Connie'))
+
     def test_unique_book(self):
         books = self.data_source.books('Beloved')
         self.assertTrue(len(books) == 1)
@@ -43,13 +48,11 @@ class BooksDataSourceTester(unittest.TestCase):
         books = self.data_source.books('Orange')
         self.assertTrue(len(books) == 0)
      
-<<<<<<< HEAD
     def test_case_sensitive_title(self:
         books = self.data_source.books('Beloved')
-=======
+
     def test_case_sensitive_title(self):
         books = self.data_source.books('beloved')
->>>>>>> b9a15217da3f48e5f0e0aa101e58fd7f7a948feb
         self.assertTrue(len(books) == 0)
 
 
