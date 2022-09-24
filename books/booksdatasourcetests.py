@@ -47,6 +47,13 @@ class BooksDataSourceTester(unittest.TestCase):
         books = self.data_source.books('beloved')
         self.assertTrue(len(books) == 0)
 
+    def test_two_books(self):
+        books = self.data_source.books("Beloved, Omoo")
+        self.assertTrue(len(books) == 0)
+
+    def year_not_in_scope(self):
+        books = self.data_source.books.year(1000)
+        self.assertTrue(len(books) == 0)
 
 if __name__ == '__main__':
-    unittest.main()
+   unittest.main()
