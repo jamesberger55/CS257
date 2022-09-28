@@ -74,6 +74,15 @@ class BooksDataSource:
         results = []
         if search_text == None:
             return sorted(self.author_list, key=attrgetter("surname", "given_name"))
+        else:
+            search_text = search_text.lower()
+            for author in self.author_list:
+                if search_text in author.surname.lower():
+                    results.append(author)
+                elif search_text in author.given_name.lower():
+                    results.append(author)
+            return sorted(results, key=attrgetter("surname", "given_name"))
+   
         
     def books(self, search_text=None, sort_by='title'):
         ''' Returns a list of all the Book objects in this data source whose
@@ -91,6 +100,10 @@ class BooksDataSource:
         if search_text == None:
             return sorted(self.book_list, key=attrgetter("title", "publication_year"))
         else:
+            search_text = search_text.lower()
+            for book in self.book_list:
+                if search_text in book.title.lower():
+                    results.append(book)
             if sort_by == 'year':
                 return sorted(results, key=attrgetter("publication_year", "title"))
             else:
