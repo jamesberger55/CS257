@@ -114,4 +114,5 @@ class BooksDataSource:
             should be included.
         '''
         return []
-
+if __name__ == "__main__":
+    ds = BooksDataSource("books1test.csv")
