@@ -75,8 +75,11 @@ class BooksDataSource:
             returns all of the Author objects. In either case, the returned list is sorted
             by surname, breaking ties using given name (e.g. Ann Brontë comes before Charlotte Brontë).
         '''
-        return []
-
+      
+        results = []
+        if search_text == None:
+            return sorted(self.author_list, key=attrgetter("surname", "given_name"))
+        
     def books(self, search_text=None, sort_by='title'):
         ''' Returns a list of all the Book objects in this data source whose
             titles contain (case-insensitively) search_text. If search_text is None,
@@ -89,7 +92,15 @@ class BooksDataSource:
                 default -- same as 'title' (that is, if sort_by is anything other than 'year'
                             or 'title', just do the same thing you would do for 'title')
         '''
-        return []
+        results = []
+        if search_text == None:
+            return sorted(self.book_list, key=attrgetter("title", "publication_year"))
+        else:
+            if sort_by == 'year':
+                return sorted(results, key=attrgetter("publication_year", "title"))
+            else:
+                return sorted(results, key=attrgetter("title", "publication_year")) 
+
 
     def books_between_years(self, start_year=None, end_year=None):
         ''' Returns a list of all the Book objects in this data source whose publication
