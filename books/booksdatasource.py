@@ -8,6 +8,8 @@
 '''
 
 import csv
+from operator import attrgetter
+
 
 class Author:
     def __init__(self, surname='', given_name='', birth_year=None, death_year=None, books=[]):
