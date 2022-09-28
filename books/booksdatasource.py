@@ -62,14 +62,7 @@ class BooksDataSource:
         '''
         self.author_list = []
         self.book_list = []
-        with open(books_csv_file_name) as csvfile:
-            reader = csv.reader(csvfile)
-            for row in reader:
-                this_author = self.parse_author_string(row[2])
-                new_book = Book(row[0], int(row[1]), this_author)
-                self.book_list.append(new_book)
-                for cur_author in this_author:
-                    cur_author.written_works.append(new_book)
+       
 
     def authors(self, search_text=None):
         ''' Returns a list of all the Author objects in this data source whose names contain
@@ -116,5 +109,17 @@ class BooksDataSource:
             should be included.
         '''
         return []
-if __name__ == "__main__":
-    ds = BooksDataSource("books1.csv")
+        if start_year == None and end_year == None:
+            results = self.book_list
+        elif start_year == None:
+            for book in self.book_list:
+                if book.publication_year <= end_year:
+                    results.append(book)
+        elif end_year == None:
+            for book in self.book_list:
+                if book.publication_year >= start_year:
+                    results.append(book)
+        else:
+            for book in self.book_list:
+                if book.publication_year >= start_year and book.publication_year <= end_year:
+                    results.append(book)
