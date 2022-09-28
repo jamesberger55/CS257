@@ -60,9 +60,33 @@ class BooksDataSource:
             suitable instance variables for the BooksDataSource object containing
             a collection of Author objects and a collection of Book objects.
         '''
+
+        '''
         self.author_list = []
         self.book_list = []
-       
+        with open(books_csv_file_name) as csvfile:
+            reader = csv.reader(csvfile)
+            for row in reader:
+                this_author = self.parse_author_string(row[2])
+                new_book = Book(row[0], int(row[1]), this_author)
+                self.book_list.append(new_book)
+                for cur_author in this_author:
+                    cur_author.written_works.append(new_book)
+        '''
+        self.csv = books_csv_file_name
+        book_list = []
+        try:
+            file = open(csv)
+        except IOError:
+            print("Error:", csv, " cannot be found, try looking at help manual")
+            
+        for line in file:
+            fields = line.split(",")
+            '''title, year, author = fields[0], int(fields[1]), fields[2]'''
+            new_book = Book(fields[0], int(fields[1]), fields[2])
+            book_list.append(new_book)
+            
+
 
     def authors(self, search_text=None):
         ''' Returns a list of all the Author objects in this data source whose names contain
