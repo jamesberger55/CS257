@@ -93,11 +93,11 @@ class BooksDataSource:
                 if author2_death_year == '':
                     auther2_death_year = None
                 else:
-                    author2_death_year = int(author_death)
+                    author2_death_year = int(author_libe[5])
                 if author_death_year == '':
                     auther_death_year = None
                 else:
-                    author_death_year = int(author_death)
+                    author_death_year = int(author_libe[2])
                     
             author_names_dict = author_name.split(" ") 
             author_given_name = author_names_dict[0]
