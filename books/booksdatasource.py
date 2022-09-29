@@ -62,7 +62,7 @@ class BooksDataSource:
         '''
         
         csv = books_csv_file_name
-        book_list = []
+        self.book_list = []
         try:
             reader = open(csv)
         except IOError:
