@@ -68,7 +68,55 @@ class BooksDataSource:
             for row in reader:
                 new_book = Book(row[0], int(row[1]), row[2])
                 self.book_list.append(new_book)
-
+       
+            
+                author_info = row[2].replace("(", ",").replace(")", " ").replace("-", ",").replace("and", ",")
+                author_libe = author_info.split(",")
+                k = 0
+                
+            if (len(author_libe) == 3):
+                author_name = author_libe[0]
+                author_birth_year = int(author_libe[1])
+                author_death_year = author_libe[2]
+                if author_death_year == '':
+                    auther_death_year = None
+                else:
+                    author_death_year = int(author_death)
+               
+            else:
+                author_name = author_libe[0]
+                author_birth_year = int(author_libe[1])
+                author_death_year = author_libe[2]
+                author2_name = author_libe[3]
+                author2_birth_year = int(author_libe[4])
+                author2_death_year = author_libe[5]
+                if author2_death_year == '':
+                    auther2_death_year = None
+                else:
+                    author2_death_year = int(author_death)
+                if author_death_year == '':
+                    auther_death_year = None
+                else:
+                    author_death_year = int(author_death)
+                    
+            author_names_dict = author_name.split(" ") 
+            author_given_name = author_names_dict[0]
+            author_surname = author_names_dict[1]
+            
+            author = Author(surname=author_surname, given_name=author_given_name, birth_year=author_birth_year, death_year=author_death_year)
+            
+            author_list.append(author)
+            
+            if (len(author_libe) > 3)
+                author2_names_dict = author_name.split(" ") 
+                author2_given_name = author_names_dict[0]
+                author2_surname = author_names_dict[1]
+                      
+                author2 = Author(surname=author2_surname, given_name=author2_given_name, birth_year=author2_birth_year, death_year=author2_death_year)
+            
+                author_list.append(author2)
+                
+                
         
        
             
