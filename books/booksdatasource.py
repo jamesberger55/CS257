@@ -67,7 +67,7 @@ class BooksDataSource:
            
         for i in range (len(author_info)//3):
             author_name = author_info[k]
-            author_birth = int(author_info[k+1])
+            author_birth = int(author_info[k+1])  
             author_death = author_info[k+2]
             if author_death == '':
                author_death = Null
