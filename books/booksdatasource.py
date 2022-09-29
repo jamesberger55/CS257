@@ -81,7 +81,7 @@ class BooksDataSource:
                 if author_death_year == '':
                     auther_death_year = None
                 else:
-                    author_death_year = int(author_death_year)
+                    author_death_year = int(author_libe[2])
                
             else:
                 author_name = author_libe[0]
