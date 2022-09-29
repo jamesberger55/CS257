@@ -134,7 +134,7 @@ class BooksDataSource:
             return sorted(self.author_list, key=attrgetter("surname", "given_name"))
         else:
             search_text = search_text.lower()
-            for author in author_list:
+            for author in self.author_list:
                 if search_text in author.surname.lower():
                     results.append(author)
                 elif search_text in author.given_name.lower():
@@ -154,12 +154,13 @@ class BooksDataSource:
                 default -- same as 'title' (that is, if sort_by is anything other than 'year'
                             or 'title', just do the same thing you would do for 'title')
         '''
+        
         results = []
         if search_text == None:
             return sorted(self.book_list, key=attrgetter("title", "publication_year"))
         else:
             search_text = search_text.lower()
-            for book in book_list:
+            for book in self.book_list:
                 if search_text in book.title.lower():
                     results.append(book)
             if sort_by == 'year':
@@ -181,17 +182,17 @@ class BooksDataSource:
         '''
         results = []
         if start_year == None and end_year == None:
-            results = book_list
+            results = self.book_list
         elif start_year == None:
-            for book in book_list:
+            for book in self.book_list:
                 if book.publication_year <= end_year:
                     results.append(book)
         elif end_year == None:
-            for book in book_list:
+            for book in self.book_list:
                 if book.publication_year >= start_year:
                     results.append(book)
         else:
-            for book in book_list:
+            for book in self.book_list:
                 if book.publication_year >= start_year and book.publication_year <= end_year:
                     results.append(book)
 
