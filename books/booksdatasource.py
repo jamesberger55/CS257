@@ -107,7 +107,7 @@ class BooksDataSource:
             
             author_list.append(author)
             
-            if (len(author_libe) > 3)
+            if (len(author_libe) > 3):
                 author2_names_dict = author_name.split(" ") 
                 author2_given_name = author_names_dict[0]
                 author2_surname = author_names_dict[1]
