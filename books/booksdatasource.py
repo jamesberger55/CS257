@@ -70,7 +70,7 @@ class BooksDataSource:
                 self.book_list.append(new_book)
        
             
-                author_info = row[2].replace("(", ",").replace(")", " ").replace("-", ",").replace("and", ",")
+                author_info = row[2].replace("(", ",").replace(")", "").replace("-", ",").replace("and", ",")
                 author_libe = author_info.split(",")
                 k = 0
                 
