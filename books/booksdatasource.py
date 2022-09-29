@@ -111,13 +111,11 @@ class BooksDataSource:
                       
                     author2 = Author(surname=author2_surname, given_name=author2_given_name, birth_year=author2_birth_year, death_year=author2_death_year)
             
-                    selfauthor_list.append(author2)
+                    self.author_list.append(author2)
                 
                 self.new_book = Book(row[0], int(row[1]))
                 self.new_book.authors.append(author_list)
                 self.author.books.append(book_list)
-            
-
 
     def authors(self, search_text=None):
         ''' Returns a list of all the Author objects in this data source whose names contain
