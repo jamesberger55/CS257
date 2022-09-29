@@ -61,7 +61,7 @@ class BooksDataSource:
             a collection of Author objects and a collection of Book objects.
         '''
         
-        self.csv = books_csv_file_name
+        csv = books_csv_file_name
         book_list = []
         try:
             reader = open(csv)
