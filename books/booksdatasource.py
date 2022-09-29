@@ -61,13 +61,13 @@ class BooksDataSource:
             a collection of Author objects and a collection of Book objects.
         '''
         
-         self.author_list = []
-         self.book_list = []
-         with open(books_csv_file_name) as csv:
-             reader = csv.reader(csv)
-             for row in reader:
-                 new_book = Book(row[0], int(row[1], author_info))
-                 self.book_list.append(new_book)
+        self.author_list = []
+        self.book_list = []
+        with open(books_csv_file_name) as csv:
+            reader = csv.reader(csv)
+            for row in reader:
+                new_book = Book(row[0], int(row[1], author_info))
+                self.book_list.append(new_book)
 
         
        
