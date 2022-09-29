@@ -86,11 +86,11 @@ class BooksDataSource:
                     author2_name = author_libe[3]
                     author2_birth_year = int(author_libe[4])
                     author2_death_year = author_libe[5]
-                    if author2_death_year == '':
+                    if author2_death_year == '' or author_death_year == ' ':
                         auther2_death_year = None
                     else:
                         author2_death_year = int(author_libe[5])
-                    if author_death_year == '':
+                    if author_death_year == '' or author_death_year == ' ':
                         auther_death_year = None
                     else:
                         author_death_year = int(author_libe[2])
@@ -102,7 +102,7 @@ class BooksDataSource:
                 '''Account for same author'''
                 author = Author(surname=author_surname, given_name=author_given_name, birth_year=author_birth_year, death_year=author_death_year)
             
-                author_list.append(author)
+                self.author_list.append(author)
             
                 if (len(author_libe) > 3):
                     author2_names_dict = author_name.split(" ") 
@@ -111,10 +111,11 @@ class BooksDataSource:
                       
                     author2 = Author(surname=author2_surname, given_name=author2_given_name, birth_year=author2_birth_year, death_year=author2_death_year)
             
-                    author_list.append(author2)
+                    selfauthor_list.append(author2)
                 
-                new_book = Book(row[0], int(row[1]), author_list)
-                author.books.append(book_list)
+                self.new_book = Book(row[0], int(row[1]))
+                self.new_book.authors.append(author_list)
+                self.author.books.append(book_list)
             
 
 
