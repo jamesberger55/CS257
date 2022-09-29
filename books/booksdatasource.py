@@ -67,7 +67,7 @@ class BooksDataSource:
             reader = csv.reader(csvfile)
             for row in reader:
                 new_book = Book(row[0], int(row[1]), row[2])
-                self.book_list.append(new_book)
+                book_list.append(new_book)
        
             
                 author_info = row[2].replace("(", ",").replace(")", "").replace("-", ",").replace("and", ",")
