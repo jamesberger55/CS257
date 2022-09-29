@@ -60,35 +60,38 @@ class BooksDataSource:
             suitable instance variables for the BooksDataSource object containing
             a collection of Author objects and a collection of Book objects.
         '''
+        
+        self.csv = books_csv_file_name
+        book_list = []
+        try:
+            reader = open(csv)
+        except IOError:
+            print("Error:", csv, " cannot be found, try looking at help manual")
+            
+        
         for row in reader:
             author_facts = row[2].replace(" (", ",").replace(")", "").replace("-", ",").replace("\n",'').replace(' and ', ',')
             author_list = author_info.split(",")
             k = 0
-              
-            for i in range (len(author_info)//3):
-                author_name = author_info[k]
-                author_birth = int(author_info[k+1])  
-                author_death = author_info[k+2]
-                if author_death == '':
-                    author_death = Null
-                else:
-                    author_death = int(author_death)
+           
+        for i in range (len(author_info)//3):
+            author_name = author_info[k]
+            author_birth = int(author_info[k+1])  
+            author_death = author_info[k+2]
+            if author_death == '':
+               author_death = Null
+            else:
+            author_death = int(author_death)
                          
-            author_names_dict = author_name.split(" ")
-            author_first = author_names_dict[0]
-            author_last = author_names_dict[1]
-            author = Author(surname=author_last, given_name=author_first, birth_year=author_birth, death_year=author_death)
+        author_names_dict = author_name.split(" ")
+        author_first = author_names_dict[0]
+        author_last = author_names_dict[1]
+        author = Author(surname=author_last, given_name=author_first, birth_year=author_birth, death_year=author_death)
                 
-            author_list.append(author)
+        author_list.append(author)
                                
-        self.csv = books_csv_file_name
-        book_list = []
-        try:
-            file = open(csv)
-        except IOError:
-            print("Error:", csv, " cannot be found, try looking at help manual")
-            
-        for line in file:
+
+        for line in reader:
             fields = line.split(",")
             '''title, year, author = fields[0], int(fields[1]), fields[2]'''
             new_book = Book(fields[0], int(fields[1]), fields[2])
