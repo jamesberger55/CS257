@@ -76,18 +76,18 @@ class BooksDataSource:
             authors_list = []
             
            for i in range (len(author_info)//3):
-                author_name = author_info[k]
-                author_birth = int(author_info[k+1])  
-                author_death = author_info[k+2]
-                if author_death == '':
-                    author_death = Null
+                author_given_name = author_info[k]
+                author_birth_year = int(author_info[k+1])  
+                author_death_year = author_info[k+2]
+                if author_death_year == '':
+                    author_death_year = Null
                 else:
-                    author_death = int(author_death)
+                    author_death_year = int(author_death_year)
                          
                 author_names_dict = author_name.split(" ")
-                author_first = author_names_dict[0]
-                author_last = author_names_dict[1]
-                author = Author(surname=author_last, given_name=author_first, birth_year=author_birth, death_year=author_death)
+                author_given_name = author_names_dict[0]
+                author_surname = author_names_dict[1]
+                author = Author(surname=author_surname, given_name=author_given_name, birth_year=author_birth_year, death_year=author_death_year)
                 
                 author_list.append(author)
                                
