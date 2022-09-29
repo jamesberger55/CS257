@@ -71,7 +71,7 @@ class BooksDataSource:
         
         for row in reader:
             author_facts = row[2].replace(" (", ",").replace(")", "").replace("-", ",").replace("\n",'').replace(' and ', ',')
-            author_list = author_info.split(",")
+            author_info = author_facts.split(",")
             k = 0
            
         for i in range (len(author_info)//3):
