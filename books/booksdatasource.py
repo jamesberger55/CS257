@@ -73,30 +73,26 @@ class BooksDataSource:
             author_facts = row[2].replace(" (", ",").replace(")", "").replace("-", ",").replace("\n",'').replace(' and ', ',')
             author_info = author_facts.split(",")
             k = 0
-            author_list = []
+            authors_list = []
             
-            for i in range (len(author_info)//3):
-                 author_name = author_info[k]
-                 author_birth = int(author_info[k+1])  
-                 author_death = author_info[k+2]
-                 if author_death == '':
-                     author_death = Null
-                 else:
-                     author_death = int(author_death)
+           for i in range (len(author_info)//3):
+                author_name = author_info[k]
+                author_birth = int(author_info[k+1])  
+                author_death = author_info[k+2]
+                if author_death == '':
+                    author_death = Null
+                else:
+                    author_death = int(author_death)
                          
-                 author_names_dict = author_name.split(" ")
-                 author_first = author_names_dict[0]
-                 author_last = author_names_dict[1]
-                 author = Author(surname=author_last, given_name=author_first, birth_year=author_birth, death_year=author_death)
+                author_names_dict = author_name.split(" ")
+                author_first = author_names_dict[0]
+                author_last = author_names_dict[1]
+                author = Author(surname=author_last, given_name=author_first, birth_year=author_birth, death_year=author_death)
                 
-                 author_list.append(author)
+                author_list.append(author)
                                
-
-        for line in reader:
-            fields = line.split(",")
-            '''title, year, author = fields[0], int(fields[1]), fields[2]'''
-            new_book = Book(fields[0], int(fields[1]), fields[2])
-            book_list.append(new_book)
+                new_book = Book(row[0], int(row[1]), author_list)
+                book_list.append(new_book)
             
 
 
