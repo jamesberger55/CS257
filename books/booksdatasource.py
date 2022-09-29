@@ -83,12 +83,12 @@ class BooksDataSource:
             else:
                 author_death = int(author_death)
                          
-        author_names_dict = author_name.split(" ")
-        author_first = author_names_dict[0]
-        author_last = author_names_dict[1]
-        author = Author(surname=author_last, given_name=author_first, birth_year=author_birth, death_year=author_death)
+            author_names_dict = author_name.split(" ")
+            author_first = author_names_dict[0]
+            author_last = author_names_dict[1]
+            author = Author(surname=author_last, given_name=author_first, birth_year=author_birth, death_year=author_death)
                 
-        author_list.append(author)
+            author_list.append(author)
                                
 
         for line in reader:
