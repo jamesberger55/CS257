@@ -68,10 +68,8 @@ class BooksDataSource:
         except IOError:
             print("Error:", csv, " cannot be found, try looking at help manual")
             
-     
-                               
-        new_book = Book(row[0], int(row[1]), author_list)
-        book_list.append(new_book)
+        
+       
             
 
 
@@ -132,7 +130,7 @@ class BooksDataSource:
             during start_year should be included. If both are None, then all books
             should be included.
         '''
-        return []
+        results = []
         if start_year == None and end_year == None:
             results = self.book_list
         elif start_year == None:
