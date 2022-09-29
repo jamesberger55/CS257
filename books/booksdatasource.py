@@ -60,19 +60,27 @@ class BooksDataSource:
             suitable instance variables for the BooksDataSource object containing
             a collection of Author objects and a collection of Book objects.
         '''
-
-        '''
-        self.author_list = []
-        self.book_list = []
-        with open(books_csv_file_name) as csvfile:
-            reader = csv.reader(csvfile)
-            for row in reader:
-                this_author = self.parse_author_string(row[2])
-                new_book = Book(row[0], int(row[1]), this_author)
-                self.book_list.append(new_book)
-                for cur_author in this_author:
-                    cur_author.written_works.append(new_book)
-        '''
+        for row in reader:
+            author_facts = row[2].replace(" (", ",").replace(")", "").replace("-", ",").replace("\n",'').replace(' and ', ',')
+            author_list = author_info.split(",")
+            k = 0
+           
+        for i in range (len(author_info)//3):
+            author_name = author_info[i]
+            author_birth = int(author_info[k+1]
+            author_death = author_info[k+2]
+            if author_death == '':
+               author_death = Null
+            else:
+            author_death = int(author_death)
+                         
+        author_names_dict = author_name.split(" ")
+        author_first = author_names_dict[0]
+        author_last = author_names_dict[1]
+        author = Author(surname=author_last, given_name=author_first, birth_year=author_birth, death_year=author_death)
+                
+        author_list.append(author)
+                               
         self.csv = books_csv_file_name
         book_list = []
         try:
@@ -160,3 +168,5 @@ class BooksDataSource:
             for book in self.book_list:
                 if book.publication_year >= start_year and book.publication_year <= end_year:
                     results.append(book)
+
+   
