@@ -61,8 +61,8 @@ class BooksDataSource:
             a collection of Author objects and a collection of Book objects.
         '''
         
-        author_list = []
-        book_list = []
+        self.author_list = []
+        self.book_list = []
         with open(books_csv_file_name) as csvfile:
             reader = csv.reader(csvfile)
             for row in reader:
@@ -114,8 +114,8 @@ class BooksDataSource:
                     self.author_list.append(author2)
                 
                 self.new_book = Book(row[0], int(row[1]))
-                self.new_book.authors.append(author_list)
-                self.author.books.append(book_list)
+                self.new_book.authors.append(self.author_list)
+                author.books.append(self.book_list)
 
     def authors(self, search_text=None):
         ''' Returns a list of all the Author objects in this data source whose names contain
