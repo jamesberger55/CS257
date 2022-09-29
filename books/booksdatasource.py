@@ -79,9 +79,9 @@ class BooksDataSource:
             author_birth = int(author_info[k+1])  
             author_death = author_info[k+2]
             if author_death == '':
-               author_death = Null
+                author_death = Null
             else:
-            author_death = int(author_death)
+                author_death = int(author_death)
                          
         author_names_dict = author_name.split(" ")
         author_first = author_names_dict[0]
