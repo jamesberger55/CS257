@@ -119,9 +119,9 @@ class BooksDataSource:
                 author.books.append(self.book_list)
                 '''
                 
-                new_book = Book(row[0], int(row[1]), author_list)
+                new_book = Book(row[0], int(row[1]), self.author_list)
                 self.book_list.append(new_book)
-                for cur_author in author_list:
+                for cur_author in self.author_list:
                     cur_author.append(new_book)
                 
                 
