@@ -136,7 +136,6 @@ class BooksDataSource:
                     results.append(author)
             return sorted(results, key=attrgetter("surname", "given_name"))
    
-        
     def books(self, search_text=None, sort_by='title'):
         ''' Returns a list of all the Book objects in this data source whose
             titles contain (case-insensitively) search_text. If search_text is None,
@@ -149,7 +148,6 @@ class BooksDataSource:
                 default -- same as 'title' (that is, if sort_by is anything other than 'year'
                             or 'title', just do the same thing you would do for 'title')
         '''
-        
         results = []
         if search_text == None:
             return sorted(self.book_list, key=attrgetter("title", "publication_year"))
@@ -162,7 +160,6 @@ class BooksDataSource:
                 return sorted(results, key=attrgetter("publication_year", "title"))
             else:
                 return sorted(results, key=attrgetter("title", "publication_year")) 
-
 
     def books_between_years(self, start_year=None, end_year=None):
         ''' Returns a list of all the Book objects in this data source whose publication
@@ -190,6 +187,4 @@ class BooksDataSource:
             for book in self.book_list:
                 if book.publication_year >= start_year and book.publication_year <= end_year:
                     results.append(book)
-
-
                                
