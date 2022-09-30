@@ -75,7 +75,7 @@ class BooksDataSource:
                     author_birth_year = int(author_libe[1])
                     author_death_year = author_libe[2]
                     if author_death_year == '':
-                        auther_death_year = None
+                        author_death_year = None
                     else:
                         author_death_year = int(author_libe[2])
                
@@ -87,11 +87,11 @@ class BooksDataSource:
                     author2_birth_year = int(author_libe[4])
                     author2_death_year = author_libe[5]
                     if author2_death_year == '' or author_death_year == ' ':
-                        auther2_death_year = None
+                        author2_death_year = None
                     else:
                         author2_death_year = int(author_libe[5])
                     if author_death_year == '' or author_death_year == ' ':
-                        auther_death_year = None
+                        author_death_year = None
                     else:
                         author_death_year = int(author_libe[2])
                     
