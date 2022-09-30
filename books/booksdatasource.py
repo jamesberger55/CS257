@@ -123,7 +123,7 @@ class BooksDataSource:
                 self.book_list.append(new_book)
                 for cur_author in this_author:
                     cur_author.written_works.append(new_book)
-                '''[
+                '''
                 
 
     def authors(self, search_text=None):
