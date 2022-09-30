@@ -17,7 +17,7 @@ class BooksDataSourceTester(unittest.TestCase):
         authors = self.data_source.authors('Pratchett')
         self.assertTrue(len(authors) == 1)
         self.assertTrue(authors[0] == Author('Pratchett', 'Terry'))
-        print("hello")
+        
    
     def test_all_authors(self):
         tiny_data_source = BooksDataSource('tinybooks.csv')
@@ -26,13 +26,13 @@ class BooksDataSourceTester(unittest.TestCase):
         self.assertTrue(authors[0] == Author('Austen', 'Jane'))
         self.assertTrue(authors[1] == Author('Gaiman', 'Neil'))
         self.assertTrue(authors[2] == Author('Melville', 'Herman'))
-        print("hello")
+        
 
 
     def test_unique_author(self):
         author = self.data_source.authors('Campbell')
         self.assertTrue(len(author) == 0)
-
+        print("hello")
 
     
     def invalid_book_input(self):
