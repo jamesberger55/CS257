@@ -60,7 +60,7 @@ class BooksDataSource:
             suitable instance variables for the BooksDataSource object containing
             a collection of Author objects and a collection of Book objects.
         '''
-        
+        #Initialize our lists and format different years into more uniform way using commas to make parsing easier
         self.author_list = []
         self.book_list = []
         with open(books_csv_file_name) as csvfile:
@@ -69,16 +69,18 @@ class BooksDataSource:
                 author_info = row[2].replace("(", ",").replace(")", "").replace("-", ",").replace("and", ",")
                 author_libe = author_info.split(",")
           
-                
+                #Standard author with one given name, one surname, and date of living
                 if (len(author_libe) == 3):
                     author_name = author_libe[0]
                     author_birth_year = int(author_libe[1])
                     author_death_year = author_libe[2]
+                    #If author is still alive
                     if author_death_year == '':
                         author_death_year = None
                     else:
                         author_death_year = int(author_libe[2])
-               
+
+               #Special case with multiple authors
                 else:
                     author_name = author_libe[0]
                     author_birth_year = int(author_libe[1])
@@ -94,26 +96,30 @@ class BooksDataSource:
                         author_death_year = None
                     else:
                         author_death_year = int(author_libe[2])
-                    
+
+                #Parses author name into first and last name
                 author_names_dict = author_name.split(" ") 
                 author_given_name = author_names_dict[0]
                 author_surname = author_names_dict[1]
-           
+                
+                #After properly parsed creates object of Author class and adds to author_list
                 author = Author(surname=author_surname, given_name=author_given_name, birth_year=author_birth_year, death_year=author_death_year)
-            
                 self.author_list.append(author)
             
+                #Adds second author if there was one
                 if (len(author_libe) > 3):
                     author2_names_dict = author_name.split(" ") 
                     author2_given_name = author_names_dict[0]
                     author2_surname = author_names_dict[1]
                       
                     author2 = Author(surname=author2_surname, given_name=author2_given_name, birth_year=author2_birth_year, death_year=author2_death_year)
-            
                     self.author_list.append(author2)
-               
+
+                #Creates new object of Book class with the input variables from the first two values in csv and adds to our book_list 
                 new_book = Book(row[0], int(row[1]))
                 self.book_list.append(new_book)
+
+                #Sets our instance variable for list of books and authors appropriately
                 new_book.authors.append(self.author_list)
                 author.books.append(self.book_list)
                
@@ -121,10 +127,6 @@ class BooksDataSource:
                 book = 'title': row[0], 'publication_year': int(row[1]), 'author': int(row[3]}
                 self.book_list.append(book)
                 '''
-                
-      
-                
-                
 
     def authors(self, search_text=None):
         ''' Returns a list of all the Author objects in this data source whose names contain
@@ -132,15 +134,18 @@ class BooksDataSource:
             returns all of the Author objects. In either case, the returned list is sorted
             by surname, breaking ties using given name (e.g. Ann Brontë comes before Charlotte Brontë).
         '''
-      
+        
         results = []
+        #If no search text is provided then displays sorted by surname
         if search_text == None:
             return sorted(self.author_list, key=attrgetter("surname", "given_name"))
         else:
             search_text = search_text.lower()
             for author in self.author_list:
+                #If specified lower and surname than sorts by surname in descending order
                 if search_text in author.surname.lower():
                     results.append(author)
+                #Here if specified by lower and given name into descending order
                 elif search_text in author.given_name.lower():
                     results.append(author)
             return sorted(results, key=attrgetter("surname", "given_name"))
@@ -158,13 +163,16 @@ class BooksDataSource:
                             or 'title', just do the same thing you would do for 'title')
         '''
         results = []
+        #If no search text is provided then displays sorted by title
         if search_text == None:
             return sorted(self.book_list, key=attrgetter("title", "publication_year"))
         else:
             search_text = search_text.lower()
             for book in self.book_list:
+                #If specified to go in descending order
                 if search_text in book.title.lower():
                     results.append(book)
+            #If specified by year
             if sort_by == 'year':
                 return sorted(results, key=attrgetter("publication_year", "title"))
             else:
@@ -182,17 +190,21 @@ class BooksDataSource:
             should be included.
         '''
         results = []
+        #No years specified so returns list as is
         if start_year == None and end_year == None:
             results = self.book_list
         elif start_year == None:
             for book in self.book_list:
+                #Appends books that are not after the specified end year date
                 if book.publication_year <= end_year:
                     results.append(book)
         elif end_year == None:
             for book in self.book_list:
+                #Appends books that are not before the specified start year date
                 if book.publication_year >= start_year:
                     results.append(book)
         else:
+            #Appends books within range of start year and end year
             for book in self.book_list:
                 if book.publication_year >= start_year and book.publication_year <= end_year:
                     results.append(book)
