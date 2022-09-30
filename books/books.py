@@ -9,7 +9,7 @@ def authors_display(data_source):
     for author in results:
        print(author)
  
-def books_display(data_source)
+def books_display(data_source):
     if (len(sys.argv) == 2):
         results = data_source.books()
     elif (len(sys.argv) == 3): 
