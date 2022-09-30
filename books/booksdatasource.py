@@ -112,17 +112,14 @@ class BooksDataSource:
                     author2 = Author(surname=author2_surname, given_name=author2_given_name, birth_year=author2_birth_year, death_year=author2_death_year)
             
                     self.author_list.append(author2)
-                '''
-                self.new_book = Book(row[0], int(row[1]))
-                self.book_list.append(self.new_book)
-                self.new_book.authors.append(self.author_list)
-                author.books.append(self.book_list)
-                '''
                 
-                new_book = Book(row[0], int(row[1]), self.author_list)
+                new_book = Book(row[0], int(row[1]))
                 self.book_list.append(new_book)
-                for cur_author in self.author_list:
-                    cur_author.append(new_book)
+                new_book.authors.append(self.author_list)
+                author.books.append(self.book_list)
+               
+                
+      
                 
                 
 
