@@ -112,11 +112,18 @@ class BooksDataSource:
                     author2 = Author(surname=author2_surname, given_name=author2_given_name, birth_year=author2_birth_year, death_year=author2_death_year)
             
                     self.author_list.append(author2)
-                
+               
                 self.new_book = Book(row[0], int(row[1]))
                 self.book_list.append(self.new_book)
                 self.new_book.authors.append(self.author_list)
                 author.books.append(self.book_list)
+                '''
+                
+                new_book = Book(row[0], int(row[1]), this_author)
+                self.book_list.append(new_book)
+                for cur_author in this_author:
+                    cur_author.written_works.append(new_book)
+                '''[
                 
 
     def authors(self, search_text=None):
@@ -191,4 +198,4 @@ class BooksDataSource:
                     results.append(book)
 
 if __name__ == "__main__":
-    ds = BooksDataSource("books1test.csv")
+    ds = BooksDataSource("books1.csv")
