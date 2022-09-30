@@ -31,10 +31,6 @@ class BooksDataSourceTester(unittest.TestCase):
         author = self.data_source.authors('Campbell')
         self.assertTrue(len(author) == 0)
 
-    def test_unique_book(self):
-        books = self.data_source.books('Beloved')
-        self.assertTrue(len(books) == 1)
-        self.assertTrue(books[0] == Book('Beloved'))
 
     def test_all_books(self):
         tiny_data_source = BooksDataSource('tinybooks.csv')
