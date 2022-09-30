@@ -66,7 +66,7 @@ class BooksDataSourceTester(unittest.TestCase):
 
     def test_one_year(self):
         books = self.data_source.books_between_years(2016, 2019)
-        self.assertTrue(len(books) == 3)
+        self.assertTrue(len(books) == 2)
         print("10")
 
     def invalid_year_input(self):
