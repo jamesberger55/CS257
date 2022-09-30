@@ -14,7 +14,7 @@ class BooksDataSourceTester(unittest.TestCase):
         pass
 
     def test_unique_author(self):
-        authors = self.data_source.author_list('Pratchett')
+        authors = self.data_source.authors('Pratchett')
         self.assertTrue(len(authors) == 1)
         self.assertTrue(authors[0] == Author('Pratchett', 'Terry'))
     
@@ -26,10 +26,6 @@ class BooksDataSourceTester(unittest.TestCase):
         self.assertTrue(authors[1] == Author('Gaiman', 'Neil'))
         self.assertTrue(authors[2] == Author('Melville', 'Herman'))
 
-    def test_one_author(self):
-        authors = self.data_source.authors('Willis')
-        self.assertTrue(len(authors) == 2)
-        self.assertTrue(authors[0] == Author('Willis', 'Connie') & authors[1] == Author('Willis', 'Connie'))
 
     def test_unique_author(self):
         author = self.data_source.authors('Campbell')
