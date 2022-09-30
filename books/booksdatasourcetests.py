@@ -14,8 +14,8 @@ class BooksDataSourceTester(unittest.TestCase):
         pass
       
     def test_initialisation(self):
-        books = self.data_source.bookList
-        authors = self.data_source.authorList
+        books = self.data_source.book_list
+        authors = self.data_source.author_list
 
     def test_unique_author(self):
         authors = self.data_source.authors('Pratchett')
