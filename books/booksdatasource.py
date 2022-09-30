@@ -119,7 +119,7 @@ class BooksDataSource:
                 author.books.append(self.book_list)
                 '''
                 
-                book = 'title':row[0], 'publication_year': int(row[1]), 'author': int(row[3]}
+                book = 'title': row[0], 'publication_year': int(row[1]), 'author': int(row[3]}
                 self.book_list.append(book)
                
                 
