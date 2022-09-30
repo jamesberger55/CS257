@@ -64,7 +64,7 @@ class BooksDataSourceTester(unittest.TestCase):
       
 
     def test_two_books(self):
-        books = self.data_source.books('Beloved, Omoo')
+        books = self.data_source.books('Beloved', 'Omoo')
         self.assertTrue(len(books) == 0)
        
 
