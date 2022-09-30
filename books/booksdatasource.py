@@ -68,7 +68,7 @@ class BooksDataSource:
             for row in reader:
                 author_info = row[2].replace("(", ",").replace(")", "").replace("-", ",").replace("and", ",")
                 author_libe = author_info.split(",")
-                k = 0
+          
                 
                 if (len(author_libe) == 3):
                     author_name = author_libe[0]
@@ -116,6 +116,7 @@ class BooksDataSource:
                 self.new_book = Book(row[0], int(row[1]))
                 self.new_book.authors.append(self.author_list)
                 author.books.append(self.book_list)
+                self.new_book.append(self.book_list)
 
     def authors(self, search_text=None):
         ''' Returns a list of all the Author objects in this data source whose names contain
