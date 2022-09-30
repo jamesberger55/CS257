@@ -99,7 +99,6 @@ class BooksDataSource:
                 author_given_name = author_names_dict[0]
                 author_surname = author_names_dict[1]
            
-                '''Account for same author'''
                 author = Author(surname=author_surname, given_name=author_given_name, birth_year=author_birth_year, death_year=author_death_year)
             
                 self.author_list.append(author)

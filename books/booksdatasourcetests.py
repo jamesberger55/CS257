@@ -20,8 +20,7 @@ class BooksDataSourceTester(unittest.TestCase):
     def test_unique_author(self):
         authors = self.data_source.authors('Pratchett')
         self.assertTrue(len(authors) == 1)
-        self.assertTrue(authors[0] == Author('Pratchett', 'Terry'))
-       
+        self.assertTrue(authors[0] == Author('Pratchett', 'Terry'))       
    
     def test_all_authors(self):
         tiny_data_source = BooksDataSource('tinybooks.csv')
@@ -39,52 +38,45 @@ class BooksDataSourceTester(unittest.TestCase):
     def test_unique_author(self):
         author = self.data_source.authors('Campbell')
         self.assertTrue(len(author) == 0)
-         
-    def test_two_authors(self):
-        author = self.data_source.authors('Campbell', 'bob')
-        self.assertTrue(len(author) == 0)
-  
+    
+    def test_author_firstname(self):
+        authors = self.data_source.authors('Khaled')
+        self.assertTrue(len(authors) == 1)
+
     def test_bad_author_input(self):
         author = self.data_source.authors('100')
         self.assertTrue(len(author) == 0)
 
-    
     def invalid_book_input(self):
         books = self.data_source.books(2000)
         self.assertTrue(len(books) == 0)
-     
-      
+           
+    def test_one_word_book(self):
+        books = self.data_source.books('Sex')
+        self.assertTrue(len(books) == 2)
+
     def test_book_not_in_csv(self):
         books = self.data_source.books('Orange')
         self.assertTrue(len(books) == 0)
-
-     
+   
     def test_case_sensitive_title(self):
         books = self.data_source.books('Beloved')
   
-
     def test_case_sensitive_title(self):
         books = self.data_source.books('beloved')
         self.assertTrue(len(books) == 1)
-        print("hello")
-   
    
     def test_two_books(self):
          books = self.data_source.books("Beloved, Orange")
          self.assertTrue(len(books) == 0)
-         
-       
 
     def years_not_in_scope(self):
         books = self.data_source.books_between_years(1000, 1001)
         self.assertTrue(len(books) == 0)
- 
-
 
     def invalid_year_input(self):
         books = self.data_source.books_between_years('bad', 'input')
         self.assertTrue(len(books) == 0)
-    
 
 if __name__ == '__main__':
    unittest.main()
