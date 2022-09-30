@@ -116,7 +116,7 @@ class BooksDataSource:
                 self.new_book = Book(row[0], int(row[1]))
                 self.new_book.authors.append(self.author_list)
                 author.books.append(self.book_list)
-                self.new_book.append(self.book_list)
+                self.book_list.append(self.new_book)
 
     def authors(self, search_text=None):
         ''' Returns a list of all the Author objects in this data source whose names contain
