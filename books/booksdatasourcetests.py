@@ -40,7 +40,7 @@ class BooksDataSourceTester(unittest.TestCase):
         author = self.data_source.authors('Campbell', 'bob')
         self.assertTrue(len(author) == 0)
   
-    def test_bad_author)input(self):
+    def test_bad_author_input(self):
         author = self.data_source.authors('100')
         self.assertTrue(len(author) == 0)
 
