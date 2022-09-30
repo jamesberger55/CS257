@@ -12,6 +12,10 @@ class BooksDataSourceTester(unittest.TestCase):
 
     def tearDown(self):
         pass
+      
+    def test_initialisation(self):
+        books = self.data_source.bookList
+        authors = self.data_source.authorList
 
     def test_unique_author(self):
         authors = self.data_source.authors('Pratchett')
