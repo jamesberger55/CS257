@@ -187,7 +187,9 @@ class BooksDataSource:
             for book in self.book_list:
                 if book.publication_year >= start_year and book.publication_year <= end_year:
                     results.append(book)
- def main():
+
+     '''               
+                    def main():
      if sys.argv[1] == "books.py"
         if sys.argv[2] == "title":
 
@@ -201,3 +203,7 @@ class BooksDataSource:
             print(f"Error", sys.argv[2], "command not found, type 'books.py man' for help")
      else:
          print(f"Error type 'man' for help")
+         
+         '''
+if __name__ == "__main__":
+    ds = BooksDataSource("books1test.csv")
