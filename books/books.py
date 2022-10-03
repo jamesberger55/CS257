@@ -82,7 +82,7 @@ def main():
         else:
             print("Too many arguments provided, please see man to see command line interface")
 
-    elif sys.argv[1] == "man":
+    elif sys.argv[1] == "help":
         file = open("usage.txt", "r")
         print(file.read())
     else:
