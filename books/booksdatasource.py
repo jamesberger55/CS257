@@ -2,6 +2,7 @@
 '''
     booksdatasource.py
     Jeff Ondich, 21 September 2022
+    Authors: Doug Pham and James Berger
 
     For use in the "books" assignment at the beginning of Carleton's
     CS 257 Software Design class, Fall 2022.
