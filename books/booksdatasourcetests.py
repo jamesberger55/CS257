@@ -73,11 +73,11 @@ class BooksDataSourceTester(unittest.TestCase):
          books = self.data_source.books("Beloved, Orange")
          self.assertTrue(len(books) == 0)
 
-    def years_not_in_scope(self):
+    def test_years_not_in_scope(self):
         books = self.data_source.books_between_years(1000, 1001)
         self.assertTrue(len(books) == 0)
 
-    def invalid_year_input(self):
+    def test_invalid_year_input(self):
         books = self.data_source.books_between_years('bad', 'input')
         self.assertTrue(len(books) == 0)
 
