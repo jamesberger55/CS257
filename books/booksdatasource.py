@@ -3,6 +3,7 @@
     booksdatasource.py
     Jeff Ondich, 21 September 2022
     Authors: Doug Pham and James Berger
+    Revised by James Berger: Changed the names to be more clear as Ali and suggested
 
     For use in the "books" assignment at the beginning of Carleton's
     CS 257 Software Design class, Fall 2022.
@@ -68,40 +69,40 @@ class BooksDataSource:
             reader = csv.reader(csvfile)
             for row in reader:
                 author_info = row[2].replace("(", ",").replace(")", "").replace("-", ",").replace("and", ",")
-                author_libe = author_info.split(",")
+                author_library = author_info.split(",")
           
                 #Standard author with one given name, one surname, and date of living
-                if (len(author_libe) == 3):
-                    author_name = author_libe[0]
-                    author_birth_year = int(author_libe[1])
-                    author_death_year = author_libe[2]
+                if (len(author_library) == 3):
+                    author_name = author_library[0]
+                    author_birth_year = int(author_library[1])
+                    author_death_year = author_library[2]
                     #If author is still alive
                     if author_death_year == '':
                         author_death_year = None
                     else:
-                        author_death_year = int(author_libe[2])
+                        author_death_year = int(author_library[2])
 
                #Special case with multiple authors
                 else:
-                    author_name = author_libe[0]
-                    author_birth_year = int(author_libe[1])
-                    author_death_year = author_libe[2]
-                    author2_name = author_libe[3]
-                    author2_birth_year = int(author_libe[4])
-                    author2_death_year = author_libe[5]
+                    author_name = author_library[0]
+                    author_birth_year = int(author_library[1])
+                    author_death_year = author_library[2]
+                    author2_name = author_library[3]
+                    author2_birth_year = int(author_library[4])
+                    author2_death_year = author_library[5]
                     if author2_death_year == '' or author_death_year == ' ':
                         author2_death_year = None
                     else:
-                        author2_death_year = int(author_libe[5])
+                        author2_death_year = int(author_library[5])
                     if author_death_year == '' or author_death_year == ' ':
                         author_death_year = None
                     else:
-                        author_death_year = int(author_libe[2])
+                        author_death_year = int(author_library[2])
 
                 #Parses author name into first and last name
                 author_names_dict = author_name.split(" ") 
-                author_given_name = author_names_dict[0]
-                author_surname = author_names_dict[1]
+                author_given_name = author_names_dictionary[0]
+                author_surname = author_names_dictionary[1]
                 
                 #After properly parsed creates object of Author class and adds to author_list
                 author = Author(surname=author_surname, given_name=author_given_name, birth_year=author_birth_year, death_year=author_death_year)
@@ -109,9 +110,9 @@ class BooksDataSource:
             
                 #Adds second author if there was one
                 if (len(author_libe) > 3):
-                    author2_names_dict = author_name.split(" ") 
-                    author2_given_name = author_names_dict[0]
-                    author2_surname = author_names_dict[1]
+                    author2_names_dictionary = author_name.split(" ") 
+                    author2_given_name = author_names_dictionary[0]
+                    author2_surname = author_names_dictionary[1]
                       
                     author2 = Author(surname=author2_surname, given_name=author2_given_name, birth_year=author2_birth_year, death_year=author2_death_year)
                     self.author_list.append(author2)
