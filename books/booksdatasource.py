@@ -3,7 +3,7 @@
     booksdatasource.py
     Jeff Ondich, 21 September 2022
     Authors: Doug Pham and James Berger
-    Revised by James Berger: Changed the names to be more clear as Ali and suggested, Was the person we got
+    Revised by James Berger: Changed the names to be more clear as Ali and suggested, was the only person who sent revisions
 
     For use in the "books" assignment at the beginning of Carleton's
     CS 257 Software Design class, Fall 2022.
