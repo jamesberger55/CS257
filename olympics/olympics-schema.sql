@@ -5,25 +5,25 @@ Olympics data assingment
 */
 
 /* creates olympian table*/
-olympics=# CREATE TABLE olympian (
+CREATE TABLE olympian (
   id INTEGER,
   name TEXT
 );
 
 /* creates event table*/
-olympics=# CREATE TABLE event (
+CREATE TABLE event (
   id INTEGER,
   name TEXT
 );
 
 /* creates country/team table*/
-olympics=# CREATE TABLE country (
+CREATE TABLE country (
   id INTEGER,
   name TEXT
 );
 
 /* creates info about specific olympic games table*/
-olympics=# CREATE TABLE olympics_info(
+CREATE TABLE olympics_info(
   id INTEGER,
   year TEXT,
   season TEXT,
@@ -31,13 +31,13 @@ olympics=# CREATE TABLE olympics_info(
 );
 
 /* creates games table*/
-olympics=# CREATE TABLE games (
+CREATE TABLE games (
   id INTEGER,
   name TEXT
 );
 
 /* creates teh NOC table */
-olympics=# CREATE TABLE noc_regions(
+CREATE TABLE noc_regions(
   id INTEGER,
   noc TEXT,
   region TEXT,
@@ -45,7 +45,7 @@ olympics=# CREATE TABLE noc_regions(
 );
 
 /* Links all the tables */
-olympics=# CREATE TABLE event_results (
+CREATE TABLE event_results (
   athlete_id INTEGER,
   event_id INTEGER,
   team_id INTEGER,
