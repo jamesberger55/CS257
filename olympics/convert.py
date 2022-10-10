@@ -4,7 +4,6 @@ CS257
 olympics convert.py file
 '''
 
-
 import csv
 
 olympian = {}
@@ -78,7 +77,7 @@ for row in reader:
     olympic_info_city = row[11]
     if olympic_info_year not in olympics_info:
         olympic_info_id = len(olympics_info) + 1
-        olympics[olympic_year] = olympic_info_id
+        olympics_info[olympic_year] = olympic_info_id
         writer.writerow([olympic_id, olympic_year, olympic_season, olympic_city])
 olympics_file.close()
 original_data_file.close()
