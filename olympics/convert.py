@@ -1,8 +1,8 @@
-/*
+'''
 James Berger
 CS257
 olympics convert.py file
-*/
+'''
 
 
 import csv
