@@ -21,23 +21,23 @@ ORDER BY noc_regions.noc;
 List the names of all the athletes from Jamaica. If your database design allows it, sort the athletes by last name.
 */
 
-SELECT DISTINCT athletes.name                                                 
-FROM athletes, teams, event_results                                          
-WHERE athletes.id = event_results.athlete_id                                    
-AND teams.name = 'Jamaica'                                                   
-AND event_results.team_id = teams.id
-ORDER BY athletes.name;
+SELECT DISTINCT olympian.name                                                 
+FROM olympian, country, event_results                                          
+WHERE olympian.id = event_results.olympian_id                                    
+AND country.name = 'Jamaica'                                                   
+AND event_results.country_id = country.id
+ORDER BY olympian.name;
 
 /*
 List all the medals won by Greg Louganis, sorted by year. Include whatever fields in this output that you think appropriate.
 */
 
-SELECT event_results.medal, olympics.season, olympics.year
-FROM event_results, athletes, olympics
-WHERE athletes.name = 'Greg Louganis'
-AND athletes.id = event_results.athlete_id
-AND olympics.id = event_results.olympic_id
-ORDER BY olympics.year;
+SELECT event_results.medal, olympics_info.season, olympics_info.year
+FROM event_results, olympian, olympics_info
+WHERE olympian.name = 'Greg Louganis'
+AND olympian.id = event_results.olympian_id
+AND olympics_info.id = event_results.olympics_info_id
+ORDER BY olympics_info.year;
 
 /*
 List all the NOCs and the number of gold medals they have won, in decreasing order of the number of gold medals.
