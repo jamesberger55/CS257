@@ -1,56 +1,73 @@
-/*
-James Berger
-CS257
-Olympics data assingment
-*/
+'''
 
-/* creates olympian table*/
+olympics-schema.sql
+Doug Pham
+October 13, 2022
+
+Creates out tables that we made new csvs for
+
+'''
+
 CREATE TABLE athletes (
-  id INTEGER,
-  name TEXT,
-  sex TEXT,
-  age TEXT,
-  height TEXT,
-  weight TEXT
+    id INTEGER,
+    name TEXT
 );
-
 
 CREATE TABLE events (
-  id INTEGER,
-  name TEXT,
-  sport TEXT
+    id INTEGER,
+    sport TEXT,
+    event TEXT
 );
 
-
-
-
-CREATE TABLE games (
-  id INTEGER,
-  name TEXT
+CREATE TABLE settings (
+    id INTEGER,
+    games TEXT,
+    city TEXT,
+    year INTEGER
 );
 
-
-CREATE TABLE olympics_info(
-  id INTEGER,
-  year TEXT,
-  season TEXT,
-  city TEXT
+CREATE TABLE results (
+    id INTEGER,
+    medal TEXT
 );
 
-CREATE TABLE noc_regions(
-  id INTEGER,
-  noc TEXT,
-  region TEXT,
-  notes TEXT
+CREATE TABLE countries (
+    id INTEGER,
+    team TEXT,
+    noc TEXT
 );
 
-CREATE TABLE event_results (
-  athlete_id INTEGER,
-  event_id INTEGER,
-  team_id INTEGER,
-  game_id INTEGER,
-  olympic_id INTEGER,
-  noc_id INTEGER,
-  medal TEXT
+CREATE TABLE genders (
+    id INTEGER,
+    sex TEXT
 );
 
+CREATE TABLE ages (
+    id INTEGER,
+    years TEXT
+);
+
+CREATE TABLE heights (
+    id INTEGER,
+    units TEXT
+);
+
+CREATE TABLE weights (
+    id INTEGER,
+    kgs TEXT
+);
+
+CREATE TABLE athletes_countries (
+    id INTEGER,
+    name TEXT,
+    country TEXT,
+    event TEXT,
+    year INTEGER,
+    medal TEXT
+);
+
+CREATE TABLE nocs_medals (
+    id INTEGER,
+    noc TEXT,
+    medals TEXT
+);
