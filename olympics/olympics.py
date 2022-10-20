@@ -1,4 +1,7 @@
 '''
+James Berger
+CS257
+olympics.py file for command line interface
 '''
 import sys
 import psycopg2
