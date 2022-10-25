@@ -77,9 +77,9 @@ class BooksDataSourceTester(unittest.TestCase):
         books = self.data_source.books_between_years(1000, 1001)
         self.assertTrue(len(books) == 0)
 
-    def test_invalid_year_input(self):
-        books = self.data_source.books_between_years('bad', 'input')
-        self.assertTrue(len(books) == 0)
+    def test_year_range(self):
+        books = self.data_source.books_between_years(1850, 2009)
+        self.assertTrue(len(books) == 26)
 
 if __name__ == '__main__':
    unittest.main()

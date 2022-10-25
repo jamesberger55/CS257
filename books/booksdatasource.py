@@ -101,21 +101,23 @@ class BooksDataSource:
 
                 #Parses author name into first and last name
                 author_names_dict = author_name.split(" ") 
-                author_given_name = author_names_dictionary[0]
-                author_surname = author_names_dictionary[1]
+                author_given_name = author_names_dict[0]
+                author_surname = author_names_dict[1]
                 
                 #After properly parsed creates object of Author class and adds to author_list
                 author = Author(surname=author_surname, given_name=author_given_name, birth_year=author_birth_year, death_year=author_death_year)
-                self.author_list.append(author)
-            
+                if author not in self.author_list:
+                    self.author_list.append(author)
+
                 #Adds second author if there was one
-                if (len(author_libe) > 3):
+                if (len(author_library) > 3):
                     author2_names_dictionary = author_name.split(" ") 
-                    author2_given_name = author_names_dictionary[0]
-                    author2_surname = author_names_dictionary[1]
+                    author2_given_name = author_names_dict[0]
+                    author2_surname = author_names_dict[1]
                       
                     author2 = Author(surname=author2_surname, given_name=author2_given_name, birth_year=author2_birth_year, death_year=author2_death_year)
-                    self.author_list.append(author2)
+                    if author2 not in self.author_list:
+                        self.author_list.append(author2)
 
                 #Creates new object of Book class with the input variables from the first two values in csv and adds to our book_list 
                 new_book = Book(row[0], int(row[1]))
@@ -137,7 +139,8 @@ class BooksDataSource:
         results = []
         #If no search text is provided then displays sorted by surname
         if search_text == None:
-            return sorted(self.author_list, key=attrgetter("surname", "given_name"))
+            sort_authors = sorted(self.author_list, key=attrgetter("surname", "given_name"))
+            return sort_authors
         else:
             search_text = search_text.lower()
             for author in self.author_list:
@@ -147,7 +150,8 @@ class BooksDataSource:
                 #Here if specified by lower and given name into descending order
                 elif search_text in author.given_name.lower():
                     results.append(author)
-            return sorted(results, key=attrgetter("surname", "given_name"))
+            sort_authors = sorted(results, key=attrgetter("surname", "given_name"))
+            return sort_authors
    
     def books(self, search_text=None, sort_by='title'):
         ''' Returns a list of all the Book objects in this data source whose
@@ -189,24 +193,28 @@ class BooksDataSource:
             should be included.
         '''
         results = []
+        sort_year = sorted(self.book_list, key=lambda book:book.publication_year)
         #No years specified so returns list as is
         if start_year == None and end_year == None:
-            results = self.book_list
-        elif start_year == None:
-            for book in self.book_list:
-                #Appends books that are not after the specified end year date
-                if book.publication_year <= end_year:
-                    results.append(book)
-        elif end_year == None:
-            for book in self.book_list:
+            for book in sort_year:
+                results.append(book)
+        elif start_year == None and end_year != None:
+            for book in sort_year:
+                for book in sort_year:
+                    #Appends books that are not after the specified end year date
+                    if int(book.publication_year) <= int(end_year):
+                        results.append(book)
+        elif end_year == None and start_year != None:
+            for book in sort_year:
                 #Appends books that are not before the specified start year date
-                if book.publication_year >= start_year:
+                if int(book.publication_year) >= int(start_year):
                     results.append(book)
-        else:
+        elif start_year != None and end_year != None:
             #Appends books within range of start year and end year
-            for book in self.book_list:
-                if book.publication_year >= start_year and book.publication_year <= end_year:
+            for book in sort_year:
+                if int(book.publication_year) >= int(start_year) and int(book.publication_year) <= int(end_year):
                     results.append(book)
+        return results
 
 if __name__ == "__main__":
     ds = BooksDataSource("books1.csv")
