@@ -1,21 +1,37 @@
 books.py 
 
+Doug Pham and James Berger
+
 NAME
 	search for case sensitive book titles
 
 SYNOPSIS
 	python3 books.py author <keyword>
-	python3 books.py title <keyword> --sort
+	python3 books.py title <keyword> [title | year]
 	python3 books.py year <start year> <end year>
 	python3 books.py help 
 	
 DESCRIPTION
-	The books.py utility allows a user to input a title or an author and search
-	all books if keyword is specified, if not specified then returns all books
-	and if sort if said then return books sorted
-	
-	year searches for the books that fall within the ranges of the
-	specified parameters and returns the results from the search
+	The books.py utility allows a user to search through a books.csv file
+	and find specific authors, books, or years published
+
+	author			query books by author name from specified keyword
+						-no input specified then return all authors
+
+	title			query books by title from specified keyword
+						-no input specified then return all books
+
+	year			query books by year from specified start and end years
+						-no input specified then return all books
+
+	<start year>	searches for years of books published after start year
+
+	<end year>		searches for years of books published before end year
+
+	<keyword>		searches for keyword in specified previous field
+
+	[title | year]	user can sort the books that contain the specified keyword
+					by either title or year depending on which was specified
 	
 
 EXIT STATUS
